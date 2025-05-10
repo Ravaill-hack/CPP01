@@ -17,4 +17,5 @@ int	main(void)
 	delete (gregoire_heap);
 	delete (magalie_heap);
 	delete (jardinier_heap);
+	return (0);
 }
