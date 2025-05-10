@@ -9,16 +9,17 @@
 class Zombie
 {
 	public:
-		static 	std::string nameList[10];
-		Zombie (void);
+		Zombie (std::string name);
 		~Zombie (void);
+		
 		void	announce (void);
-		Zombie* newZombie (std::string name);
-		void	randomChump (std::string name);
 
 	private:
-		std::string	name;
+		std::string	_name;
 
 };
+
+Zombie* newZombie (std::string name);
+void	randomChump (std::string name);
 
 #endif

@@ -1,30 +1,19 @@
 
 #include "Zombie.hpp"
 
-Zombie::nameList = {"Gregoire le zombie", "Magalie la zombie", "Jerome le jardinier zombie", "Eglantine la factrice zombie", "Un villageois zombie", "Drago Malefoy le zombie", "Une asperge sauvage zombie", "Elizabeth la zombie", "Marc-Emmanuel le zombie" , "Pamela la zombie"};
 
-Zombie::Zombie (void)
+Zombie::Zombie (std::string name)
 {
-	name = ;
+	_name = name;
 	std::cout << name << " has been created." << std::endl;
 }
 	
 Zombie::~Zombie (void)
 {
-	std::cout << name << " has been destroyed." << std::endl;
+	std::cout << _name << " has been destroyed." << std::endl;
 }
 
-void	announce (void)
+void	Zombie::announce (void)
 {
-
-}
-
-Zombie* newZombie (std::string name)
-{
-
-}
-
-void	randomChump (std::string name)
-{
-
+	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
