@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 11:45:28 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/10 14:13:06 by lmatkows         ###   ########.fr       */
+/*   Created: 2025/05/10 12:48:54 by lmatkows          #+#    #+#             */
+/*   Updated: 2025/05/10 13:13:52 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
 
-HumanB::HumanB 	(std::string name)
+int	main(int argc, char **argv)
 {
-	_name = name;
-}
-
-HumanB::~HumanB(){}
-
-void	HumanB::setWeapon(Weapon &weapon)
-{
-	_weapon = &weapon;
-}
-
-void	HumanB::attack() const
-{
-	std::cout << _name << "attacks";
-	if (_weapon != NULL)
+	if (argc != 4)
 	{
-		std::cout << " with their " << _weapon->getType() << std::endl;
+		std::cout << "There must be 3 inputs : ./src string_to_replace new_string" << std::endl;
 	}
 	else
 	{
-		std::cout << " with no weapon" << std::endl;
+		
 	}
+	return (0);
 }
