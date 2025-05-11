@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:28:41 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/11 17:59:33 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/11 18:29:19 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,26 @@ WriteFile::WriteFile(std::string infile, std::string str_to_rep, std::string new
 
 WriteFile::~WriteFile()
 {
-	_outstream.close();
-	if (_outstream.fail())
-		std::cerr << "Error, cannot close outfile" << std::endl;
+	if (outstream.is_open())
+	{
+		outstream.close();
+		if (outstream.fail())
+			std::cerr << "Error, cannot close outfile" << std::endl;
+	}
 }
 
 int	WriteFile::try_to_write(std::ifstream &instream)
 {
 	if (!_check_outfile())
 		return (0);
-	_fill_outfile(&instream);
+	_fill_outfile(instream);
 	return (1);
 }
 
-int	WriteFile::_check_outfile(void) const
+int	WriteFile::_check_outfile(void)
 {
-	_outstream.open(_outfile.c_str(), std::ofstream::out | std::ofstream::trunc);
-	if (!_outstream)
+	outstream.open(_outfile.c_str(), std::ofstream::out | std::ofstream::trunc);
+	if (!outstream)
 		return (std::cerr << "Error, cannot open outfile" << std::endl, 0);
 	return (1);
 }
@@ -68,7 +71,7 @@ void	WriteFile::_fill_outfile(std::ifstream &instream)
 
 	while (std::getline(instream, curr_line))
 	{
-		_new_line = _get_replaced_line(curr_line);
-		_outstream << new_line << std::endl;
+		new_line = _get_replaced_line(curr_line);
+		outstream << new_line << std::endl;
 	}
 }

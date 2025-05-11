@@ -12,12 +12,11 @@ class ReadFile
 		ReadFile(std::string infile);
 		~ReadFile(void);
 		int				try_to_read (void);
-		std::ifstream	&get_instream (void);
+		std::ifstream 	instream;
 	
 	private:
 		std::string 	_infile;
 		std::string 	_file_content;
-		std::ifstream 	_instream;
 };
 
 #endif
