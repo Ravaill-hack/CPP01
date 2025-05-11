@@ -6,13 +6,16 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:28:41 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/11 17:18:21 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:59:33 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WriteFile.hpp"
 
-WriteFile::WriteFile(std::string outfile, std::string str_to_rep, std::string new_str):_outfile(outfile), _string_to_replace(str_to_rep), _new_string(new_str) {}
+WriteFile::WriteFile(std::string infile, std::string str_to_rep, std::string new_str) : _string_to_replace(str_to_rep), _new_string(new_str)
+{
+	_outfile = infile.append(".replace");
+}
 
 WriteFile::~WriteFile()
 {
@@ -21,16 +24,23 @@ WriteFile::~WriteFile()
 		std::cerr << "Error, cannot close outfile" << std::endl;
 }
 
-int	WriteFile::_check_outfile(void) const
+int	WriteFile::try_to_write(std::ifstream &instream)
 {
-	_outstream.open(_outfile.c_str());
-	if (!_outstream)
-		return (std::cerr << "Error, cannot open outfile" << std::endl, 0);
-	else
-		return (1);
+	if (!_check_outfile())
+		return (0);
+	_fill_outfile(&instream);
+	return (1);
 }
 
-std::string	WriteFile::_get_replaced_line(std::string line)
+int	WriteFile::_check_outfile(void) const
+{
+	_outstream.open(_outfile.c_str(), std::ofstream::out | std::ofstream::trunc);
+	if (!_outstream)
+		return (std::cerr << "Error, cannot open outfile" << std::endl, 0);
+	return (1);
+}
+
+std::string	WriteFile::_get_replaced_line(std::string line) const
 {
 	int			old_i = 0;
 	int			new_i = line.find(_string_to_replace, old_i);
@@ -51,7 +61,7 @@ std::string	WriteFile::_get_replaced_line(std::string line)
 	return (new_line);
 }
 
-int	WriteFile::fill_outfile(std::ifstream &instream)
+void	WriteFile::_fill_outfile(std::ifstream &instream)
 {
 	std::string	new_line;
 	std::string	curr_line;

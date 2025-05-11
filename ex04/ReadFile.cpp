@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:28:25 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/11 16:23:00 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:59:38 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@ ReadFile::~ReadFile(void)
 		std::cerr << "Error, cannot close infile" << std::endl;
 }
 
-int	ReadFile::try_to_read(void)
+std::ifstream	&ReadFile::get_instream (void)
 {
-	if (!_check_infile())
-		return (0);
-	else
-		return (ReadFile::_fill_content());
+	return (&_instream);
 }
 
-int	ReadFile::_check_infile(void) const
+int	ReadFile::try_to_read(void)
 {
 	_instream.open(_infile.c_str());
 	if (!_instream)
@@ -38,7 +35,3 @@ int	ReadFile::_check_infile(void) const
 		return (1);
 }
 
-void	ReadFile::_fill_content(void)
-{
-	
-}
