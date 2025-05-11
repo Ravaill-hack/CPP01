@@ -5,6 +5,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS_FILES = \
 	main.cpp \
+	ReadFile.cpp \
+	WriteFile.cpp \
 
 OBJS = $(SRCS_FILES:.cpp=.o)
 

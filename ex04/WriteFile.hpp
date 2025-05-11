@@ -1,0 +1,26 @@
+
+#ifndef WRITEFILE_HPP
+# define WRITEFILE_HPP
+# include <iostream>
+# include <iomanip>
+# include <string>
+# include <fstream>
+# include "ReadFile.hpp"
+
+class WriteFile
+{
+	public:
+		WriteFile(std::string outfile, std::string str_to_rep, std::string new_str);
+		~WriteFile(void);
+		int				fill_outfile(std::ifstream &instream);
+
+	private:
+		int				_check_outfile(void) const;
+		std::string		_get_replaced_line(std::string line);
+		std::string 	_string_to_replace;
+		std::string 	_new_string;
+		std::string 	_outfile;
+		std::ofstream 	_outstream;
+};
+
+#endif
