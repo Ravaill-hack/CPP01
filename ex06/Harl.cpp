@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/11 21:09:04 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:20:53 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,17 @@ void	Harl::complain(std::string level) const
 	{
 		if (level == _complain_levels[i])
 		{
-			while (i < 4)
+			switch (i)
 			{
-				switch (i)
-				{
-					case 0:
-						Harl::debug();
-						break;
-					case 1:
-						Harl::info();
-						break;
-					case 2:
-						Harl::warning();
-						break;
-					case 3:
-						Harl::error();
-						break;
-				}
-				i++;
+				case 0:
+					Harl::debug();
+				case 1:
+					Harl::info();
+				case 2:
+					Harl::warning();
+				case 3:
+					Harl::error();
+					break;
 			}
 			return;	
 		}

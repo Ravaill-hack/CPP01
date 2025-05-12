@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:48:54 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/11 21:14:50 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:19:31 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 	{
 		std::cerr << "There must be 3 inputs : <file> <string_to_replace> <new_string>" << std::endl;
+		return (1);
+	}
+	if (argv[2] == "")
+	{
+		std::cerr << "Second input cannot be an empty string" << std::endl;
 		return (1);
 	}
 	ReadFile	inst_rf(argv[1]);

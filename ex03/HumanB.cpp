@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 11:45:28 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/05/10 14:13:06 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:16:44 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 HumanB::HumanB 	(std::string name)
 {
+	_weapon = NULL;
 	_name = name;
 }
 
